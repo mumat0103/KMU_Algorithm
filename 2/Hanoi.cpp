@@ -1,8 +1,9 @@
 #include <iostream>
-#include <stack>
+#define MAX_SIZE 16
 using namespace std;
-
-stack<int> s;
+void Hanoi(int n, int a, int b, int c);
+int stack[MAX_SIZE];
+int top;
 
 void Hanoi(int n, int a, int b, int c)
 {
@@ -11,16 +12,17 @@ void Hanoi(int n, int a, int b, int c)
         Hanoi(n - 1, a, c, b);
         if (c == 3)
         {
-            s.push(n);
-            printf("%d ", s.top());
+            top++;
+            stack[top] = n;
+            printf("%d ", n);
         }
         else if (a == 3)
         {
-            if (!s.empty())
-            {
-                s.pop();
-            }
-            printf("%d ", s.top());
+            top--;
+            if (top == -1)
+                printf("%d ", 0);
+            else
+                printf("%d ", stack[top]);
         }
         Hanoi(n - 1, b, a, c);
     }
@@ -34,11 +36,10 @@ int main()
 
     for (int i = 0; i < t; i++)
     {
-        s.push(0);
         cin >> numDisks;
+        top = -1;
         Hanoi(numDisks, 1, 2, 3);
         cout << "\n";
     }
-
     return 0;
 }
