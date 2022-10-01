@@ -12,10 +12,7 @@ int main()
     {
         int n;
         cin >> n;
-
-        int results = fib(n);
-        cout << results << "\n";
-        results = 0;
+        cout << fib(n) << "\n";
     }
 
     return 0;
