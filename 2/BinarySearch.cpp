@@ -18,6 +18,7 @@ int sumOfWeight(struct node *root);
 int maxPathWeight(struct node *root);
 void mirror(struct node **root);
 void destruct(struct node **root);
+void swap(node **p1, node **p2);
 
 int main()
 {
@@ -38,7 +39,7 @@ int main()
         printf("%d\n", height(root) - 1);
         printf("%d\n", sumOfWeight(root));
         printf("%d\n", maxPathWeight(root));
-        // mirror(&root);
+        mirror(&root);
         preOrder(root);
         printf("\n");
         inOrder(root);
@@ -66,7 +67,7 @@ void insert(struct node **root, int data)
     }
     else
     {
-        if ((**root).data <= data)
+        if ((**root).data >= data)
         {
             insert(&(**root).left, data);
         }
@@ -149,12 +150,17 @@ void mirror(struct node **root)
         mirror(&(**root).left);
         mirror(&(**root).right);
 
-        struct node *temp;
-        temp = (**root).left;
-        (**root).left = (**root).right;
-        (**root).right = temp;
+        swap(&(**root).left, &(**root).right);
     }
 }
+
+void swap(node **p1, node **p2)
+{
+    node *temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
+}
+
 // 노드에 저장된 데이터의 값의 합 구하기(recursion)
 int sumOfWeight(struct node *root)
 {
