@@ -5,18 +5,16 @@ void multiple(long long a[][2], long long b[][2]);
 
 int main()
 {
-
     int t;
     cin >> t;
     while (t--)
     {
         int n;
         cin >> n;
-        long long a[2][2] = {1, 1, 1, 0};
-        long long ans[2][2] = {1, 0, 0, 1};
+        long long a[2][2] = {{1, 1}, {1, 0}};
+        long long ans[2][2] = {{1, 0}, {0, 1}};
         while (n > 0)
         {
-
             if (n % 2 == 1)
             {
                 multiple(ans, a);
