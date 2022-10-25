@@ -41,18 +41,12 @@ void permuteString(char *str, int begin, int end)
         for (int j = 0; str[j] != '\0'; j++)
         {
             if (j % 2 == 0)
-            {
                 sum += int(str[j] - int('a'));
-            }
             else
-            {
                 sum -= (int(str[j] - int('a')));
-            }
         }
         if (sum > 0)
-        {
             cnt++;
-        }
     }
     else
     {
@@ -69,8 +63,6 @@ void permute(char *str)
 {
     int strlen = 0;
     for (int i = 0; str[i] != '\0'; i++)
-    {
         strlen = i + 1;
-    }
     permuteString(str, 0, strlen);
 }

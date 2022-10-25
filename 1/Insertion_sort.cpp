@@ -34,7 +34,7 @@ void insertionSort(int a[], int n)
     int countSwaps = 0;  // swap 함수 실행 횟수
     // selection sort 알고리즘 구현
     int i, j, tmp;
-    for (i = 0; i < n; i++)
+    for (i = 1; i < n; i++)
     {
         tmp = a[i];
         for (j = i; j > 0; j--)
