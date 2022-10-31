@@ -102,7 +102,7 @@ int Lomuto_partition(int a[], int low, int high)
     for (i = low + 1; i <= high; i++)
     {
         LcompCnt++;
-        if (a[i] < pivot)
+        if (a[i] <= pivot)
         {
             j++;
             LswapCnt++;
