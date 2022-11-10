@@ -38,4 +38,5 @@
 # 강의 자료
 /pdf
 *.pdf
+.cph
 # End of https://www.toptal.com/developers/gitignore/api/c++
