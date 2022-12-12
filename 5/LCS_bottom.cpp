@@ -4,8 +4,8 @@ using namespace std;
 #define MAX_LENGTH 110
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 
-int lcs(char a[], char b[], int m, int n);
-void printLCS(char a[], char b[], int m, int n);
+int lcs(char s[], char t[], int m, int n);
+void printLCS(char s[], char t[], int m, int n);
 
 int strlen(char a[]);
 
@@ -25,21 +25,28 @@ int main()
         int len_a = strlen(a);
         int len_b = strlen(b);
 
-        for (int i = 0; i <= len_a; i++)
-            for (int j = 0; j <= len_b; j++)
+        for (int i = 0; i <= len_b; i++)
+            for (int j = 0; j <= len_a; j++)
                 dp[i][j] = -1;
 
-        int ret = lcs(a, b, strlen(a), strlen(b));
+        int ret = lcs(b, a, len_b, len_a);
 
         cout << ret << " ";
-        printLCS(a, b, len_a, len_b);
+        printLCS(b, a, len_b, len_a);
         cout << endl;
+
+        for (int i = 0; i <= len_b; i++)
+        {
+            for (int j = 0; j <= len_a; j++)
+                cout << S[i][j] << " ";
+            cout << endl;
+        }
     }
 
     return 0;
 }
 
-int lcs(char a[], char b[], int m, int n)
+int lcs(char s[], char t[], int m, int n)
 {
     int i, j;
     for (i = 0; i <= m; i++)
@@ -48,7 +55,7 @@ int lcs(char a[], char b[], int m, int n)
         dp[0][i] = 0;
     for (i = 1; i <= m; i++)
         for (j = 1; j <= n; j++)
-            if (a[i - 1] == b[j - 1])
+            if (s[i - 1] == t[j - 1])
             {
                 dp[i][j] = dp[i - 1][j - 1] + 1;
                 S[i][j] = 0;
@@ -64,19 +71,20 @@ int lcs(char a[], char b[], int m, int n)
     return dp[m][n];
 }
 
-void printLCS(char a[], char b[], int m, int n)
+void printLCS(char s[], char t[], int m, int n)
 {
+    printf("[%d][%d] ", m, n);
     if (m == 0 || n == 0)
         return;
     if (S[m][n] == 0)
     {
-        printLCS(a, b, m - 1, n - 1);
-        printf("%c", a[m - 1]);
+        printLCS(s, t, m - 1, n - 1);
+        printf("%c", s[m - 1]);
     }
     else if (S[m][n] == 1)
-        printLCS(a, b, m, n - 1);
+        printLCS(s, t, m, n - 1);
     else if (S[m][n] == 2)
-        printLCS(a, b, m - 1, n);
+        printLCS(s, t, m - 1, n);
 }
 
 int strlen(char a[])

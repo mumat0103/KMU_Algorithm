@@ -8,26 +8,26 @@ int count = 0;
 
 void fixheap(int i, int len)
 {
-    int j = i * 2;
-    int k = arr[i];
-    while (j <= len)
+    int c = i * 2;  // child
+    int p = arr[i]; // parent
+    while (c <= len)
     {
-        if (j < len)
+        if (c < len)
         {
-            if (arr[j] < arr[j + 1])
-                j++;
+            if (arr[c] < arr[c + 1])
+                c++;
             count++;
         }
-
         count++;
 
-        if (k > arr[j])
+        if (p > arr[c])
             break;
 
-        arr[j / 2] = arr[j];
-        j *= 2;
+        swap(arr[c / 2], arr[c]);
+        // arr[c / 2] = arr[c];
+        c *= 2;
     }
-    arr[j / 2] = k;
+    arr[c / 2] = p;
 }
 
 void swap(int i, int j)
