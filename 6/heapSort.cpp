@@ -24,7 +24,6 @@ void fixheap(int i, int len)
             break;
 
         swap(arr[c / 2], arr[c]);
-        // arr[c / 2] = arr[c];
         c *= 2;
     }
     arr[c / 2] = p;

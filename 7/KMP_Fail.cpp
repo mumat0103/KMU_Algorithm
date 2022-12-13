@@ -21,13 +21,9 @@ void getFail(char pattern[])
     for (int i = 1; i < patternLen; i++)
     {
         while (j > 0 && pattern[i] != pattern[j])
-        {
             j = fail[j - 1];
-        }
         if (pattern[i] == pattern[j])
-        {
             fail[i] = ++j;
-        }
     }
 }
 
@@ -40,9 +36,7 @@ void kmp(char text[], char pattern[])
     for (int i = 0, j = 0; text[i] != '\0'; i++)
     {
         while (j > 0 && text[i] != pattern[j])
-        {
             j = fail[j - 1];
-        }
         if (text[i] == pattern[j])
         {
             if (j == patternLength - 1)
@@ -51,9 +45,7 @@ void kmp(char text[], char pattern[])
                 j = fail[j];
             }
             else
-            {
                 j++;
-            }
         }
     }
 }
@@ -69,9 +61,7 @@ int main()
         kmp(text, pattern);
 
         for (int i = 0; i < strlen(pattern); i++)
-        {
             cout << fail[i] << " ";
-        }
         cout << '\n';
         cout << match << '\n';
 

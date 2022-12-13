@@ -34,13 +34,6 @@ int main()
         cout << ret << " ";
         printLCS(b, a, len_b, len_a);
         cout << endl;
-
-        for (int i = 0; i <= len_b; i++)
-        {
-            for (int j = 0; j <= len_a; j++)
-                cout << S[i][j] << " ";
-            cout << endl;
-        }
     }
 
     return 0;
@@ -73,7 +66,6 @@ int lcs(char s[], char t[], int m, int n)
 
 void printLCS(char s[], char t[], int m, int n)
 {
-    printf("[%d][%d] ", m, n);
     if (m == 0 || n == 0)
         return;
     if (S[m][n] == 0)
