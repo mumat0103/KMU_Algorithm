@@ -45,13 +45,9 @@ void merge(int a[], int low, int mid, int high)
     {
         cnt++;
         if (temp[i] <= temp[j])
-        {
             a[k++] = temp[i++];
-        }
         else
-        {
             a[k++] = temp[j++];
-        }
     }
     while (i <= mid)
         a[k++] = temp[i++];
