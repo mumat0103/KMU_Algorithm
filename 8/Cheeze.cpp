@@ -22,12 +22,11 @@ int findMax(int a[])
 int main()
 {
     int size = 10;
+
     int ret = 0;
 
     for (int i = 0; i < 4; i++)
-    {
         price[i] = cheeze[0][i] / cheeze[1][i];
-    }
 
     int max = findMax(price);
     while (size > 0 && cheeze[1][idx] != 0)
